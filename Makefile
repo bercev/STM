@@ -1,13 +1,13 @@
 # Makefile for STM C++ project
 
-# Compiler and compiler flags
-CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -O2
-
 # Directories
 SRC_DIR := src
 BUILD_DIR := build
 BIN_DIR := bin
+
+# Compiler and compiler flags
+CXX := g++
+CXXFLAGS := -Wall -Wextra -std=c++17 -O2
 
 # Source file and target name
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
@@ -22,7 +22,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	@mkdir -p $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ -lsqlite3
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
